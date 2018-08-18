@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>纯唇欲动 - 中文唇语识别交流</title>
+    <link href="https://cdn.bootcss.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<style>
+    .img_camera {
+        display: block;
+        margin: 30px auto;
+        /* display: none; */
+    }
+
+    .btn_photo {
+        display: block;
+        margin: 30px auto;
+        width: 100px;
+    }
+
+    .img_canvas {
+        display: block;
+        margin: 30px auto;
+        background-color: gainsboro;
+        display: none;
+    }
+
+    .data_result {
+        background-color: gainsboro;
+        width: 100%;
+        margin: 30px auto;
+        padding: 10px;
+    }
+</style>
+
+<body>
+    <video id="img_camera" class="img_camera" muted="muted" width="200"></video>
+    <a name="" id="btn_photo" class="btn btn-primary btn_photo" href="#" role="button">提交数据</a>
+    <canvas id="img_canvas" class="img_canvas" width="200"></canvas>
+    <div class="data_result">
+        性别：
+        <span id="data_gender"></span>
+        <br> 年龄：
+        <span id="data_age"></span>
+        <br> 笑容（概率）：
+        <span id="data_smile"></span>
+        <br> 人种：
+        <span id="data_ethnicity"></span>
+        <br> 情绪：
+        <span id="data_emotion"></span>
+        <br> 颜值：
+        <span id="data_beauty"></span>
+        <br> 皮肤状态：
+        <span id="data_skin"></span>
+    </div>
+
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        navigator.getUserMedia = navigator.getUserMedia ||
+            navigator.webkitGetUserMedia ||
+            navigator.mozGetUserMedia;
+
+        navigator.mediaDevices.getUserMedia({
+            video: {
+                facingMode: "user"
+            },
+            audio: false
+        }, ).then((stream) => {
+            $("#img_camera")[0].srcObject = stream;
+            $("#img_camera")[0].play();
+        }, (err) => {
+            alert(err);
+        });
+
+        let ctx = $("#img_canvas")[0].getContext("2d");
+        let imgData = $("#img_canvas")[0].toDataURL("img/png").substr(22);
+
+        let interval = setInterval(() => {
+            ctx.drawImage($("#img_camera")[0], 0, 0, 200, 150);
+            imgData = $("#img_canvas")[0].toDataURL("img/png").substr(22);
+        }, 500);
+
+        $("#btn_photo").on("click", () => {
+            $.ajax({
+                url: "https://api-cn.faceplusplus.com/facepp/v3/detect",
+                type: "POST",
+                data: {
+                    api_key: "3xME1UDV5MLzVAmiSgT8Rq-CEVQWKMu6",
+                    api_secret: "6l2D14sgc91boa3I6CO-tixfn9fmDKCG",
+                    image_base64: imgData,
+                    return_landmark: 0,
+                    return_attributes: "gender,age,smiling,emotion,ethnicity,beauty,skinstatus"
+                },
+                success: (data) => {
+                    console.log(data);
+                    $("#data_gender").text(data.faces[0].attributes.gender.value);
+                    $("#data_age").text(data.faces[0].attributes.age.value);
+                    $("#data_smile").text(data.faces[0].attributes.smile.value);
+                    $("#data_emotion").html("<pre>" + JSON.stringify(data.faces[0].attributes.emotion,
+                        null, 1) + "</pre>");
+                    $("#data_ethnicity").text(data.faces[0].attributes.ethnicity.value);
+                    $("#data_beauty").html("<pre>" + JSON.stringify(data.faces[0].attributes.beauty,
+                        null, 1) + "</pre>");
+                    $("#data_skin").html("<pre>" + JSON.stringify(data.faces[0].attributes.skinstatus,
+                        null, 1) + "</pre>");
+                },
+                error: (err) => {
+                    alert(err.status);
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>
