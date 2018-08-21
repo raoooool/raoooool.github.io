@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>颜值测试</title>
+    <link href="https://cdn.bootcss.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../beauty/index.css">
+</head>
+
+<body>
+    <div class="background_body">
+        <br>
+        <div class="hint_small">很抱歉，不支持您的手机。</div>
+        <div class="content_body">
+            <div class="content_top">
+                <video playsinline muted id="img_camera" class="img_camera" height="150"></video>
+                <div class="btn_group">
+                    <a name="" id="btn_submit" class="btn  btn_submit" href="#" role="button">颜值分析</a>
+                    <a name="" id="btn_camera" class="btn btn_camera" href="#" role="button" data-toggle="popover" title="帮助" data-content="首先请检查浏览器权限，选择允许调用摄像头。另外，iOS端要注意关闭「省电模式」并且系统要求iOS11及以上。Android端因为各个品牌内置浏览器内核版本不同，请使用最新版Chrome或其他Blink\WebKit内核的浏览器。本项目基于webRTC实现。"
+                        data-placement="bottom" data-trigger="focus" tabindex="0">无法调用摄像头？</a>
+                </div>
+                <canvas id="img_canvas" class="img_canvas" width="200"></canvas>
+                <div class="data_result" id="data_result">
+                    Aloha ,
+                    <span id="user_age"></span> 岁的
+                    <span id="user_gender"></span> 。
+                    <br> 你的颜值分析报告：
+                    <!-- <span id="user_beauty_gender"></span>给你打
+                    <span id="user_beauty"></span> 分喔～ -->
+                </div>
+                <div class="data_pie" id="data_pie">
+                    <br>
+                </div>
+            </div>
+            <div class="text_footer">
+                AI不是万能的，结果仅供娱乐，请勿当真～
+                <br>提交bug：
+                <a href="https://github.com/FakeGua">GitHub</a> | 人脸识别：
+                <a href="https://www.faceplusplus.com.cn">Face++</a>
+                <br>Designed by Pan. 2018
+            </div>
+        </div>
+
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcss.com/echarts/4.1.0.rc2/echarts.min.js"></script>
+    <!-- <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script> -->
+    <script src="../beauty/index.js"></script>
+</body>
+
+</html>
