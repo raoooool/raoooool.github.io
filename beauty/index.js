@@ -69,9 +69,9 @@ $("#btn_submit").on("click", () => {
                 },
                 yAxis: {},
                 series: [{
-                    name: '销量',
+                    name: '分数',
                     type: 'bar',
-                    data: [data.faces[0].attributes.beauty.male_score, data.faces[0].attributes.beauty.female_score,100],
+                    data: [parseInt(data.faces[0].attributes.beauty.male_score+20), parseInt(data.faces[0].attributes.beauty.female_score+20),100],
                     barMaxWidth: "50px",
                     label:{
                         show:true
