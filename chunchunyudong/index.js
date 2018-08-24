@@ -1,3 +1,9 @@
+//Useragent test and judge
+// alert(navigator.userAgent);
+if (navigator.userAgent.search("MicroMessenger") != -1 || navigator.userAgent.search("QQ") != -1) {
+    $("#useragent").show();
+}
+
 //兼容性测试
 const getUserMedia = navigator.getUserMedia ||
     navigator.webkitGetUserMedia ||
@@ -40,9 +46,9 @@ let imgData = $("#img_canvas")[0].toDataURL("img/png").substr(22);
 setInterval(() => {
     ctx.drawImage($("#img_camera")[0], 0, 0, 200, 150);
     imgData = $("#img_canvas")[0].toDataURL("img/png").substr(22);
-}, 300);
+}, 100);
 
-//Ajax by button
+//Ajax by button(For Test)
 // $("#btn_submit").on("click", () => {
 //     $.ajax({
 //         url: "https://api-cn.faceplusplus.com/facepp/v3/detect",
@@ -95,9 +101,9 @@ function judgeLip(data) {
     console.log(x, y);
     if (x <= 1) {
         $("#data_char").text("未张嘴");
-    } else if (x > 1 && x < 10) {
+    } else if (x > 1 && x < 8) {
         $("#data_char").text("你");
-    } else if (x >= 10) {
+    } else if (x >= 8) {
         $("#data_char").text("好");
     }
 }
@@ -107,13 +113,18 @@ let tts_array = [];
 $("#btn_submit").on("click", () => {
     tts_array.push($("#data_char").text());
     console.log(tts_array);
-    $("#data_tts").text(tts_array.join(""));
+    $("#data_tts").val(tts_array.join(""));
 })
 //Baidu TTS API button
 $("#data_play").on("click", () => {
     let tok = "24.2955395accf86bb2737850453eb0769a.2592000.1537491373.282335-11709606"
-    $("#data_sound").attr("src", `http://tsn.baidu.com/text2audio?tex=${tts_array.join("")}&lan=zh&cuid=abcd&ctp=1&tok=${tok}`);
+    $("#data_sound").attr("src", `http://tsn.baidu.com/text2audio?tex=${$("#data_tts").val()}&lan=zh&cuid=abcd&ctp=1&tok=${tok}`);
     $("#data_sound").attr("autoplay", true);
     tts_array = [];
-    $("#data_tts").text("");
+    $("#data_tts").val("");
+})
+
+//优化input体验
+$("#data_tts").on("focusout",()=>{
+    tts_array = $("#data_tts").val().split("");
 })
