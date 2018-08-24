@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>纯唇欲动 - 中文唇语识别交流系统</title>
+    <link href="https://cdn.bootcss.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+    <div class="content_header">
+        <span>纯唇欲动 - 中文唇语识别交流系统 Demo</span>
+    </div>
+
+    <div class="content_body">
+        <div class="content_1">
+            <video playsinline muted id="img_camera" class="img_camera" height="150">
+            </video>
+            <img src="./img/face_recognition_scan_512px_1169929_easyicon.net.png" id="img_hint" class="img_hint" alt="" width="100">
+            <canvas id="img_canvas" class="img_canvas" width="200"></canvas>
+        </div>
+        <div class="content_2">
+            <div class="data_result" id="data_result">
+                你要说的是不是：
+                <br> “ &nbsp;
+                <span id="data_char" class="data_char">未开摄像头</span>&nbsp; ”
+            </div>
+        </div>
+        <div class="content_3">
+            <div class="content_span">
+                <div class="btn_group">
+                    <a name="" id="btn_submit" class="btn btn-primary" href="#" role="button">是哒</a>
+                    <a name="" id="btn_help" class="btn btn-primary" href="#" role="button" data-toggle="popover" title="帮助" data-content="首先请检查浏览器权限，是否允许调用摄像头。另外，iOS端要注意关闭「省电模式」并且系统要求iOS11及以上。Android端因为各个品牌内置浏览器内核版本不同，请使用最新版Chrome或其他Blink\WebKit内核的浏览器。本项目基于webRTC实现。"
+                        data-placement="top" data-trigger="focus" tabindex="0">无法调用摄像头？</a>
+                </div>
+                <div class="row">
+                    <div class="data_tts col-7 offset-2" id="data_tts"></div>
+                    <div class="col-3">
+                        <a name="" id="data_play" class="btn btn-primary" href="#" role="button">播放</a>
+                    </div>
+                </div>
+                <audio src="" id="data_sound"></audio>
+            </div>
+        </div>
+    </div>
+
+    <div class="content_footer">
+        <div class="content_span">
+            请务必在网络良好情况下测试
+            <br> Demo版目前仅支持“你”“好”两个字，敬请期待。
+            <br> &copy; 法克瓜 2018 | 提交bug：
+            <a href="https://github.com/FakeGua">GitHub</a> | 人脸识别：
+            <a href="https://www.faceplusplus.com.cn">Face++</a>
+        </div>
+    </div>
+
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+    <script src="./index.js"></script>
+</body>
+
+</html>
