@@ -20,17 +20,29 @@
 </head>
 
 <body>
-    <div class="background_body">
+    <div class="useragent" id="useragent">
         <br>
-        <div class="hint_small">很抱歉，不支持您的手机。</div>
+        <h1>Sorry</h1>
+        <hr> 「纯唇欲动」不支持微信/QQ端打开，
+        <br>请点击右上角菜单按钮，
+        <br>使用
+        <b>其他浏览器</b>打开。
+    </div>
+
+    <div class="background_body">
         <div class="content_body">
-            <div class="content_top">
+            <div class="content_1">
                 <video playsinline muted id="img_camera" class="img_camera" height="150"></video>
-                <div class="btn_group">
-                    <a name="" id="btn_submit" class="btn  btn_submit" href="#" role="button">颜值分析</a>
-                    <a name="" id="btn_camera" class="btn btn_camera" href="#" role="button" data-toggle="popover" title="帮助" data-content="首先请检查浏览器权限，选择允许调用摄像头。另外，iOS端要注意关闭「省电模式」并且系统要求iOS11及以上。Android端因为各个品牌内置浏览器内核版本不同，请使用最新版Chrome或其他Blink\WebKit内核的浏览器。本项目基于webRTC实现。"
-                        data-placement="bottom" data-trigger="focus" tabindex="0">无法调用摄像头？</a>
+            </div>
+            <div class="content_2">
+                <div class="row">
+                    <a name="" id="btn_submit" class="btn btn_submit col-5" href="#" role="button">颜值分析</a>
+                    <a name="" id="btn_camera" class="btn btn_camera col-6 offset-1" href="#" role="button" data-toggle="popover" title="帮助"
+                        data-content="首先请检查浏览器权限，选择允许调用摄像头。另外，iOS端要注意关闭「省电模式」并且系统要求iOS11及以上。Android端因为各个品牌内置浏览器内核版本不同，请使用最新版Chrome或其他Blink\WebKit内核的浏览器。本项目基于webRTC实现。"
+                        data-placement="bottom" data-trigger="focus" tabindex="0">没调用摄像头？</a>
                 </div>
+            </div>
+            <div class="content_3">
                 <canvas id="img_canvas" class="img_canvas" width="200"></canvas>
                 <div class="data_result" id="data_result">
                     Aloha ,
@@ -38,18 +50,21 @@
                     <span id="user_gender"></span> 。
                     <br> 你的颜值分析报告：
                     <!-- <span id="user_beauty_gender"></span>给你打
-                    <span id="user_beauty"></span> 分喔～ -->
-                </div>
-                <div class="data_pie" id="data_pie">
-                    <br>
+                            <span id="user_beauty"></span> 分喔～ -->
                 </div>
             </div>
-            <div class="text_footer">
-                AI不是万能的，结果仅供娱乐，请勿当真～
-                <br>提交bug：
-                <a href="https://github.com/FakeGua">GitHub</a> | 人脸识别：
-                <a href="https://www.faceplusplus.com.cn">Face++</a>
-                <br>Designed by Pan. 2018
+            <div class="content_4">
+                <div class="data_pie" id="data_pie">
+                </div>
+            </div>
+            <div class="content_5">
+                <footer>
+                    AI不是万能的，结果仅供娱乐，请勿当真～
+                    <br>提交bug：
+                    <a href="https://github.com/FakeGua">GitHub</a> | 人脸识别：
+                    <a href="https://www.faceplusplus.com.cn">Face++</a>
+                    <br>Designed by Pan. 2018
+                </footer>
             </div>
         </div>
 

@@ -1,3 +1,9 @@
+//Useragent test and judge
+// alert(navigator.userAgent);
+if (navigator.userAgent.search("MicroMessenger") != -1 || navigator.userAgent.search("QQ") != -1) {
+    $("#useragent").show();
+}
+
 $("#data_result").hide();
 
 const getUserMedia = navigator.getUserMedia ||
@@ -5,7 +11,7 @@ const getUserMedia = navigator.getUserMedia ||
     navigator.mozGetUserMedia;
 
 if (!getUserMedia) {
-    alert("浏览器不支持,详情请点击“无法调用摄像头？”查看。");
+    alert("浏览器不支持,详情请点击“没调用摄像头？”查看。");
 } else {
     navigator.mediaDevices.getUserMedia({
         video: {
