@@ -48,6 +48,7 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    height: 80%;
 }
 
 .img_camera {
@@ -81,7 +82,7 @@ body {
 }
 
 .content_body .content_2 {
-    height: 30%;
+    height: 34%;
 }
 
 .btn_group {
