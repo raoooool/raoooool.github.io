@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>「颜值测试」</title>
     <link href="https://cdn.bootcss.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
@@ -23,7 +24,7 @@
     <div class="useragent" id="useragent">
         <br>
         <h1>Sorry</h1>
-        <hr> 「纯唇欲动」不支持微信/QQ端打开，
+        <hr> 「颜值评分」不支持微信/QQ端打开，
         <br>请点击右上角菜单按钮，
         <br>使用
         <b>其他浏览器</b>打开。
@@ -32,6 +33,7 @@
     <div class="background_body">
         <div class="content_body">
             <div class="content_1">
+                <img id="img_hint" src="./人脸识别.png" alt="">
                 <video playsinline muted id="img_camera" class="img_camera" height="150"></video>
             </div>
             <div class="content_2">
@@ -45,7 +47,7 @@
             <div class="content_3">
                 <canvas id="img_canvas" class="img_canvas" width="200"></canvas>
                 <div class="data_result" id="data_result">
-                    Aloha ,
+                    Hello ,
                     <span id="user_age"></span> 岁的
                     <span id="user_gender"></span> 。
                     <br> 你的颜值分析报告：
@@ -59,7 +61,7 @@
             </div>
             <div class="content_5">
                 <footer>
-                    AI不是万能的，结果仅供娱乐，请勿当真～
+                    也许AI不懂你的美，结果仅供娱乐，请勿当真～
                     <br>提交bug：
                     <a href="https://github.com/FakeGua">GitHub</a> | 人脸识别：
                     <a href="https://www.faceplusplus.com.cn">Face++</a>

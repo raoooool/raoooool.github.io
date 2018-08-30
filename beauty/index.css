@@ -76,6 +76,15 @@ html {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    display: none;
+}
+
+.content_1 img {
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    height: 80%;
 }
 
 .content_2 {
@@ -104,6 +113,7 @@ html {
     height: 30%;
     width: 100%;
     padding: 10px;
+    display: none;
 }
 
 .data_pie {

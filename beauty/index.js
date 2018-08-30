@@ -4,8 +4,6 @@ if (navigator.userAgent.search("MicroMessenger") != -1 || navigator.userAgent.se
     $("#useragent").show();
 }
 
-$("#data_result").hide();
-
 const getUserMedia = navigator.getUserMedia ||
     navigator.webkitGetUserMedia ||
     navigator.mozGetUserMedia;
@@ -21,10 +19,20 @@ if (!getUserMedia) {
     }).then((stream) => {
         $("#img_camera")[0].srcObject = stream;
         $("#img_camera")[0].play();
+        $("#img_camera").show();
+        $("#img_hint").hide();
     }, (err) => {
         alert(err);
     });
 }
+
+let echart = echarts.init($("#data_pie")[0]);
+echart.showLoading({
+    text: '',
+    textColor: '#a9a9a9',
+    maskColor: 'none',
+    color: '#ee9ca7'
+});
 
 //修复播放按钮
 // $("#btn_camera").on("click", () => {
@@ -53,7 +61,7 @@ $("#btn_submit").on("click", () => {
             return_attributes: "gender,age,beauty"
         },
         success: (data) => {
-            if(data.faces.length != 0){
+            if (data.faces.length != 0) {
                 $("#data_result").show();
             }
             console.log(data);
@@ -66,28 +74,28 @@ $("#btn_submit").on("click", () => {
             }
 
             $("#user_age").text(data.faces[0].attributes.age.value);
-
-            echarts.init($("#data_pie")[0]).setOption({
+            echart.hideLoading();
+            echart.setOption({
                 title: {},
                 tooltip: {},
                 xAxis: {
-                    data: ["男生打分", "女生打分","满分"]
+                    data: ["男生打分", "女生打分", "满分"]
                 },
                 yAxis: {},
                 series: [{
                     name: '分数',
                     type: 'bar',
-                    data: [parseInt(data.faces[0].attributes.beauty.male_score+20), parseInt(data.faces[0].attributes.beauty.female_score+20),100],
+                    data: [parseInt(data.faces[0].attributes.beauty.male_score + 20), parseInt(data.faces[0].attributes.beauty.female_score + 20), 100],
                     barMaxWidth: "50px",
-                    label:{
-                        show:true
+                    label: {
+                        show: true
                     }
                 }],
-                color:["#ee9ca7"]
-            })
+                color: ["#ee9ca7"]
+            });
         },
         error: (err) => {
-            alert(err.status);
+            alert(err.statusText);
         }
     })
 })
