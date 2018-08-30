@@ -29,6 +29,10 @@ if (!getUserMedia) {
     });
 }
 
+document.body.addEventListener('touchmove', (ev) => {
+    ev.preventDefault();
+}, false);
+
 //修复播放按钮
 // $("#btn_camera").on("click", () => {
 //     $("#img_camera")[0].play();
@@ -125,6 +129,6 @@ $("#data_play").on("click", () => {
 })
 
 //优化input体验
-$("#data_tts").on("focusout",()=>{
+$("#data_tts").on("focusout", () => {
     tts_array = $("#data_tts").val().split("");
 })

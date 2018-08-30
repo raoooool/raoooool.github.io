@@ -26,6 +26,10 @@ if (!getUserMedia) {
     });
 }
 
+document.body.addEventListener('touchmove', (ev) => {
+    ev.preventDefault();
+}, false);
+
 let echart = echarts.init($("#data_pie")[0]);
 echart.showLoading({
     text: '',
