@@ -33,6 +33,22 @@
         <span>纯唇欲动 - 中文唇语识别交流系统 Demo</span>
     </div>
 
+    <div id="alert_camera" class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            <span class="sr-only">Close</span>
+        </button>
+        <strong>Error ! </strong>你没有授权或系统无法调用摄像头，详情点击下方「为什么“无法调用摄像头”？」
+    </div>
+
+    <div id="alert_net" class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            <span class="sr-only">Close</span>
+        </button>
+        <strong>Error ! </strong>网络状况不佳，请检查网络连接。
+    </div>
+
     <div class="content_body">
         <div class="content_1">
             <video playsinline muted id="img_camera" class="img_camera" height="150">
@@ -51,8 +67,7 @@
             <div class="content_span">
                 <div class="btn_group">
                     <a name="" id="btn_submit" class="btn btn-primary" href="#" role="button">是哒</a>
-                    <a name="" id="btn_help" class="btn btn-primary" href="#" role="button" data-toggle="popover" title="帮助" data-content="首先请检查浏览器权限，是否允许调用摄像头。另外，iOS端要注意关闭「省电模式」并且系统要求iOS11及以上。Android端因为各个品牌内置浏览器内核版本不同，请使用最新版Chrome或其他Blink\WebKit内核的浏览器。本项目基于webRTC实现。"
-                        data-placement="top" data-trigger="focus" tabindex="0">无法调用摄像头？</a>
+                    <a name="" id="data_delete" class="btn btn-primary" href="#" role="button">删掉</a>
                 </div>
                 <div class="row">
                     <input type="text" class="data_tts col-7 offset-2" id="data_tts">
@@ -67,7 +82,8 @@
 
     <div class="content_footer">
         <div class="content_span">
-            请务必在网络良好情况下测试
+            <a name="" id="btn_help" class="" href="#" role="button" data-toggle="popover" title="帮助" data-content="首先请检查浏览器权限，是否允许调用摄像头。另外，iOS端要注意关闭「省电模式」并且系统要求iOS11及以上。Android端因为各个品牌内置浏览器内核版本不同，请使用最新版Chrome或其他Blink\WebKit内核的浏览器。本项目基于webRTC实现。"
+                data-placement="top" data-trigger="focus" tabindex="0">为什么“无法调用摄像头”？</a>
             <br> Demo版目前仅支持“你”“好”两个字，敬请期待。
             <br> &copy; 法克瓜 2018 | 提交bug：
             <a href="https://github.com/FakeGua">GitHub</a> | 人脸识别：
@@ -78,7 +94,6 @@
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
     <script src="./index.js"></script>
 </body>
 

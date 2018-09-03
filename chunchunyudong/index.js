@@ -11,7 +11,7 @@ const getUserMedia = navigator.getUserMedia ||
 
 //Get camera
 if (!getUserMedia) {
-    alert("浏览器不支持调用摄像头,详情请点击“无法调用摄像头？”查看。");
+    $('#alert_camera').show();
 } else {
     navigator.mediaDevices.getUserMedia({
         video: {
@@ -25,13 +25,9 @@ if (!getUserMedia) {
         $("#img_camera")[0].play();
         postApi();
     }, (err) => {
-        alert(err);
+        $('#alert_camera').show();
     });
 }
-
-document.body.addEventListener('touchmove', (ev) => {
-    ev.preventDefault();
-}, false);
 
 //修复播放按钮
 // $("#btn_camera").on("click", () => {
@@ -91,8 +87,10 @@ function postApi() {
                 judgeLip(data);
             },
             error: (err) => {
-                console(err.status);
-            }
+                console.log(err.status);
+                $('#alert_net').show();
+            },
+            timeout: 2000
         })
     }, 500);
 }
@@ -131,4 +129,10 @@ $("#data_play").on("click", () => {
 //优化input体验
 $("#data_tts").on("focusout", () => {
     tts_array = $("#data_tts").val().split("");
+})
+
+//Delete按钮实现
+document.getElementById('data_delete').addEventListener('click', () => {
+    tts_array.pop();
+    document.getElementById('data_tts').value = tts_array.join("");
 })
