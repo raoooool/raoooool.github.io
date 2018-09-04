@@ -1,5 +1,11 @@
+@font-face {
+    font-family: myFont;
+    src: url('./assets/Helvetica\ Condensed\ Bold\ Italic.ttf');
+}
+
 * {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+    font-family: myFont;
 }
 
 html,
@@ -7,6 +13,16 @@ body {
     margin: 0;
     padding: 0;
     height: 100%;
+}
+
+.useragent {
+    position: absolute;
+    width: 100%;
+    height: 1000px;
+    background-color: white;
+    z-index: 999;
+    padding: 20px;
+    display: none;
 }
 
 hr {

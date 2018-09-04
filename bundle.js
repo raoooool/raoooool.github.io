@@ -8423,6 +8423,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+//Useragent test and judge
+// alert(navigator.userAgent);
+if (navigator.userAgent.search("MicroMessenger") != -1) {
+    document.getElementById('useragent').style.display = 'initial';
+}
+
 let mySwiper = new swiper__WEBPACK_IMPORTED_MODULE_3__["default"]('.swiper-container', {
     direction: 'horizontal',
     loop: false,
