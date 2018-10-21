@@ -40,7 +40,7 @@
                         <div>一个像素的执着 零只虫子的追求</div>
                     </div>
                     <div class="head bg-light mx-auto mt-4" onclick="window.open('http://pgy8ja4ih.bkt.clouddn.com/%E7%AE%80%E5%8E%862018.pdf')">
-                        <div class="cv animated jackInTheBox"><img src="./img/cv.png" alt=""><span class="cv-text text-muted">点我看简历
+                        <div class="cv animated jackInTheBox"><img height="50px" src="./img/cv.png" alt=""><span class="cv-text text-muted">点我看简历
                                 ~ </span></div>
                     </div>
                 </header>
@@ -174,7 +174,7 @@
                                 <span class="badge badge-pill badge-info">node.js/Koa</span>
                                 <span class="badge badge-pill badge-info">有赞Vant</span>
                                 <hr>
-                                <a class="btn btn-info btn-sm text-light">直接微信搜索“鸭飞湖”即可</a>
+                                <a class="btn btn-info btn-sm text-light">微信搜索“鸭飞湖”</a>
                             </div>
                         </div>
                         <div class="work mb-3 d-flex bg-dark">
@@ -331,10 +331,10 @@
         let cv = document.querySelector('.cv');
         setInterval(() => {
             cv.classList.replace('jackInTheBox', 'fadeOut');
-        }, 3000);
-        setInterval(() => {
-            cv.classList.replace('fadeOut', 'jackInTheBox');
-        }, 6000);
+            setTimeout(() => {
+                cv.classList.replace('fadeOut', 'jackInTheBox');
+            }, 2000);
+        }, 5000);
 
         /* 进度条 */
         let circleOne = new ProgressBar.Circle('#otherskill-1', {
