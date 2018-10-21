@@ -1,0 +1,85 @@
+@font-face {
+    font-family: myFont;
+    src: url('./assets/Helvetica\ Condensed\ Bold\ Italic.ttf');
+}
+
+* {
+    /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+    font-family: myFont;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.useragent {
+    position: absolute;
+    width: 100%;
+    height: 1000px;
+    background-color: white;
+    z-index: 999;
+    padding: 20px;
+    display: none;
+}
+
+hr {
+    border-color: #222222;
+}
+
+.img_bg {
+    position: relative;
+    padding-bottom: 130px;
+    min-height: 100%;
+    width: 100%;
+    background-image: url("./assets/background.jpg");
+    background-position: center;
+    background-size: cover;
+}
+
+.text_title {
+    color: white;
+    text-align: center;
+    font-size: 8vw;
+    width: 100%;
+    padding-top: 20px;
+}
+
+.swiper-container {
+    height: 80%;
+    width: 100%;
+}
+
+.swiper-slide {
+    padding: 20px 0;
+    border-radius: 5px;
+}
+
+.card {
+    max-width: 1100px;
+    margin: auto;
+    border: none;
+    box-shadow: 1px 1px 10px;
+    border-radius: 10px;
+}
+
+.card img {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.footer {
+    text-align: center;
+    width: 100%;
+    color: #222222;
+    position: absolute;
+    bottom: 0;
+    padding: 20px;
+}
+
+.footer a {
+    text-decoration: underline;
+    color: #222222;
+}

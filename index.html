@@ -1,126 +1,415 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- TODO : 
+    动效 - OK
+    简历下载 - OK
+    favico - OK
+    站长统计 - OK
+    点赞？
+-->
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>- 潘俊文的首页 -</title>
-    <link rel="stylesheet" href="./style.css">
+    <title>潘俊文的简历</title>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="./lib/@fortawesome/css/fontawesome-free.css">
+    <link rel="stylesheet" href="./lib/animate.min.css">
     <link rel="stylesheet" href="./index.css">
     <script>
         var _hmt = _hmt || [];
-        (function () {
-            var hm = document.createElement("script");
-            hm.src = "https://hm.baidu.com/hm.js?cedb6a5a150f33e80b7bf66a1c0dffd8";
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(hm, s);
-        })();
-    </script>
+            (function() {
+              var hm = document.createElement("script");
+              hm.src = "https://hm.baidu.com/hm.js?cedb6a5a150f33e80b7bf66a1c0dffd8";
+              var s = document.getElementsByTagName("script")[0]; 
+              s.parentNode.insertBefore(hm, s);
+            })();
+            </script>
 </head>
 
 <body>
-    <div class="useragent" id="useragent">
-        <br>
-        <h1>Sorry</h1>
-        <hr>本网页不支持微信端打开，
-        <br>请点击右上角菜单按钮，
-        <br>使用
-        <b>其他浏览器</b>打开。
-    </div>
-    <div class="img_bg">
-        <div class="text_title animated fadeInUp">Welcome to Raool</div>
-        <div class="swiper-container animated fadeInUp">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="card">
-                        <img class="card-img-top" src="./assets/programmer.jpg" alt="">
-                        <div class="card-img-top"></div>
-                        <div class="card-body">
-                            <h4 class="card-title">Who Am I ?</h4>
-                            <p class="card-text">
-                                I am Raool,
-                                <br> a student, always a student.
-                                <br> hope to be a full-stack engineer and work hard for it.
-                                <br><b> Now I present my work to you.</b>
+    <div class="main container">
+        <div class="row">
+            <div class="col-md-4 px-md-2">
+                <header class="header shadow bg-dark mt-3">
+                    <div class="h1 text-light text-center pt-4"><span class="text-info">潘</span> 俊文</div>
+                    <div class="small text-center text-light d-flex flex-column">
+                        <div>一腔热血的激情 一夜未眠的创意</div>
+                        <div>一个像素的执着 零只虫子的追求</div>
+                    </div>
+                    <div class="head bg-light mx-auto mt-4" onclick="window.open('http://pgy8ja4ih.bkt.clouddn.com/%E7%AE%80%E5%8E%862018.pdf')">
+                        <div class="cv animated jackInTheBox"><img src="./img/cv.png" alt=""><span class="cv-text text-muted">点我看简历
+                                ~ </span></div>
+                    </div>
+                </header>
+
+                <nav class="menu shadow bg-info mt-3">
+                    <div class="content d-flex justify-content-around h-100">
+                        <div id="introduce" onclick="showContent('introduce')" class="h-100 w-100 d-flex align-items-center justify-content-center"
+                            style="background-color:#343a40">
+                            <div class="d-flex justify-content-center align-items-center w-50">
+                                <span class="d-none d-md-inline" style="color:#17a2b8">关于我&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                <i class="fas fa-smile fa-lg" style="color:#17a2b8"></i>
+                            </div>
+                        </div>
+                        <div id="skills" onclick="showContent('skills')" class="h-100 w-100 d-flex align-items-center justify-content-center">
+                            <div class="d-flex justify-content-center align-items-center w-50">
+                                <span class="d-none d-md-inline" style="color:#343a40">技术栈&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                <i class="fas fa-list-ol fa-lg" style="color:#343a40"></i>
+                            </div>
+                        </div>
+                        <div id="works" onclick="showContent('works')" class="h-100 w-100 d-flex align-items-center justify-content-center">
+                            <div class="d-flex justify-content-center align-items-center w-50">
+                                <span class="d-none d-md-inline" style="color:#343a40">作品集&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                <i class="fas fa-atom fa-lg" style="color:#343a40"></i>
+                            </div>
+                        </div>
+                        <div id="contacts" onclick="showContent('contacts')" class="h-100 w-100 d-flex align-items-center justify-content-center">
+                            <div class="d-flex justify-content-center align-items-center w-50">
+                                <span class="d-none d-md-inline" style="color:#343a40">联系我&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                <i class="fab fa-telegram-plane fa-lg" style="color:#343a40"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-logo d-none d-md-flex justify-content-around align-items-center px-4 text-dark">
+                        <a class="weixin" tabindex="-1" data-container="body" data-trigger="focus" data-toggle="popover"
+                            data-placement="top" data-content="微信号：RaoolPan"><i class="fab fa-weixin fa-lg"></i></a>
+                        <a class="qq" tabindex="-1" data-container="body" data-trigger="focus" data-toggle="popover"
+                            data-placement="top" data-content="QQ：838326280"><i class="fab fa-qq fa-lg"></i></a>
+                        <a href="https://github.com/fakegua" target="_blank"><i class="fab fa-github fa-lg"></i></a>
+                        <a class="weibo" tabindex="-1" data-container="body" data-trigger="focus" data-toggle="popover"
+                            data-placement="top" data-content="不发微博喔"><i class="fab fa-weibo fa-lg"></i></a>
+                        <a href="https://www.linkedin.com/in/俊文-潘-50b1a0148" target="_blank"><i class="fab fa-linkedin fa-lg"></i></a>
+                    </div>
+                </nav>
+            </div>
+            <div class="col-md-8 px-md-2">
+                <div class="introduce">
+                    <div class="subtitle shadow bg-dark mt-3 d-flex flex-column justify-content-end animated fadeInDown slow">
+                        <div class="text-light h2 p-4 m-0"><span class="text-info">欢迎</span> 来到这里</div>
+                    </div>
+
+                    <div class="content shadow bg-light mt-3 p-4 animated fadeInUp slow">
+                        <div class="h4">你好，我是 <span class="bg-info p-1 text-light">Raool</span></div>
+                        <div class="text-muted h6 pt-1">求职意向：前端工程师</div>
+                        <div class="pt-3 pr-5 text-secondary">我是一个热爱技术的人，喜欢探索新奇的事物。因为大三时参加比赛做项目接触了前端开发，从此便沉迷于前端世界。<div
+                                class="pr-5">我在高中和大学就有过平面设计的经验，所以我热爱前端，热爱使用HTML\CSS\JS创造出美妙的页面。</div>
+                        </div>
+                        <div class="pt-5 h4 pb-2">个人信息</div>
+                        <div><span class="small_title bg-info p-1 pl-2 mb-2 small d-inline-block">毕业于</span><span class="bg-dark text-light p-1 ml-2 small d-inline-block">天津城建大学</span></div>
+                        <div><span class="small_title bg-info p-1 pl-2 mb-2 small d-inline-block">专业</span><span class="bg-dark text-light p-1 ml-2 small d-inline-block">物联网工程</span></div>
+                        <div><span class="small_title bg-info p-1 pl-2 mb-2 small d-inline-block">Github</span><span
+                                class="bg-dark text-light p-1 ml-2 small d-inline-block">Fakegua</span></div>
+                        <div><span class="small_title bg-info p-1 pl-2 mb-2 small d-inline-block">微信</span><span class="bg-dark text-light p-1 ml-2 small d-inline-block">RaoolPan</span></div>
+                    </div>
+                </div>
+
+                <div class="skills d-none">
+                    <div class="subtitle shadow bg-dark mt-3 d-flex flex-column justify-content-end animated fadeInDown slow">
+                        <div class="text-light h2 p-4 m-0"><span class="text-info">技术</span> 栈</div>
+                    </div>
+
+                    <div class="content shadow bg-light mt-3 p-4 animated fadeInUp slow">
+                        <div class="h4 mb-2">我的技能</div>
+                        <div class="container">
+                            <div class="row my-3">
+                                <div class="col-md-4"><span>HTML/CSS/JS</span></div>
+                                <div class="col-md-8">
+                                    <div id="mainskill-1" style="height:20px"></div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-md-4"><span>Bootstrap</span></div>
+                                <div class="col-md-8">
+                                    <div id="mainskill-2" style="height:20px"></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4"><span>Vue.js</span></div>
+                                <div class="col-md-8">
+                                    <div id="mainskill-3" style="height:20px"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="h4 pt-5">其他技能</div>
+                        <div class="container-fluid pt-3 text-center">
+                            <div class="row">
+                                <div class="col-4">
+                                    <div id="otherskill-1"></div>
+                                    <div class="small pt-2">SCSS</div>
+                                </div>
+                                <div class="col-4">
+                                    <div id="otherskill-2"></div>
+                                    <div class="small pt-2">PhotoShop</div>
+                                </div>
+                                <div class="col-4">
+                                    <div id="otherskill-3"></div>
+                                    <div class="small pt-2">Node.js</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="works d-none">
+                    <div class="subtitle shadow bg-dark mt-3 d-flex flex-column justify-content-end animated fadeInDown slow">
+                        <div class="text-light h2 p-4 m-0"><span class="text-info">作品</span> 集</div>
+                    </div>
+                    <div class="content shadow bg-light mt-3 p-4 animated fadeInUp slow">
+                        <div class="work mb-3 d-flex bg-dark">
+                            <div class="bg-info d-flex align-items-center justify-content-center" style="height:100%;width:200px">
+                                <i class="fab fa-3x fa-weixin text-light"></i>
+                            </div>
+                            <div class="p-3" style="overflow:auto;width: 100%">
+                                <div class="text-light font-weight-bold">鸭飞湖智慧校园</div>
+                                <div class="text-light small">微信小程序</div>
                                 <hr>
-                                <small>Why should I write myself in English?</small>
-                                <br> <small>Because I like this font-family.</small></p>
-                            <h5>Let's Slide Right to Start.</h5>
+                                <div class="text-light small">为在校师生提供人数监测以及提醒服务。</div>
+                                <span class="badge badge-pill badge-info">Wepy</span>
+                                <span class="badge badge-pill badge-info">小程序云开发</span>
+                                <span class="badge badge-pill badge-info">Axios</span>
+                                <span class="badge badge-pill badge-info">node.js/Koa</span>
+                                <span class="badge badge-pill badge-info">有赞Vant</span>
+                                <hr>
+                                <a class="btn btn-info btn-sm text-light">直接微信搜索“鸭飞湖”即可</a>
+                            </div>
+                        </div>
+                        <div class="work mb-3 d-flex bg-dark">
+                            <div class="bg-info d-flex align-items-center justify-content-center" style="height:100%;width:200px">
+                                <i class="fas fa-3x fa-hotel text-light"></i>
+                            </div>
+                            <div class="p-3" style="overflow:auto;width: 100%">
+                                <div class="text-light font-weight-bold">学生VR看房平台</div>
+                                <div class="text-light small">大学生创业比赛项目</div>
+                                <hr>
+                                <div class="text-light small">为学生提供VR看长租房的平台。</div>
+                                <span class="badge badge-pill badge-info">Vue.js</span>
+                                <span class="badge badge-pill badge-info">Vue-Cli3</span>
+                                <span class="badge badge-pill badge-info">Axios</span>
+                                <span class="badge badge-pill badge-info">EasyMock</span>
+                                <span class="badge badge-pill badge-info">有赞Vant</span>
+                                <hr>
+                                <a href="http://139.219.13.39:8080" target="_blank" class="btn btn-info btn-sm text-light">过去看看</a>
+                            </div>
+                        </div>
+                        <div class="work mb-3 d-flex bg-dark">
+                            <div class="bg-info d-flex align-items-center justify-content-center" style="height:100%;width:200px">
+                                <i class="fas fa-3x fa-laugh-wink text-light"></i>
+                            </div>
+                            <div class="p-3" style="overflow:auto;width: 100%">
+                                <div class="text-light font-weight-bold">Web唇语识别</div>
+                                <div class="text-light small">微软2018 ImagineCup</div>
+                                <hr>
+                                <div class="text-light small">在手机web端进行唇语识别并通过扬声器播放。</div>
+                                <span class="badge badge-pill badge-info">WebRTC</span>
+                                <span class="badge badge-pill badge-info">Ajax</span>
+                                <span class="badge badge-pill badge-info">face++人脸识别</span>
+                                <span class="badge badge-pill badge-info">百度TTS</span>
+                                <hr>
+                                <a href="http://raool.top/chunchunyudong" target="_blank" class="btn btn-info btn-sm text-light">过去看看</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="swiper-slide">
-                    <div class="card">
-                        <img class="card-img-top" src="./assets/house.jpg" alt="">
-                        <div class="card-img-top"></div>
-                        <div class="card-body">
-                            <h4 class="card-title">创家租房平台 <small><span class="badge badge-pill badge-success">running</span></small></h4>
-                            <p class="card-text">使用 Vue-Cli 3.0 脚手架搭建
-                                <br>页面采用有赞 Vant 组件库，数据来自 Easy Mock 模拟。
-                                <br><br>技术栈:
-                                <br> Vue全家桶 \ Vant \ Axios</p>
-                            <a href="http://139.219.13.39:8080" class="btn btn-primary">过去看看</a>
-                        </div>
-                        <div class="card-footer"><small>2018 . 8 - 2018 . 9</small></div>
+
+                <div class="contacts d-none">
+                    <div class="subtitle shadow bg-dark mt-3 d-flex flex-column justify-content-end animated fadeInDown slow">
+                        <div class="text-light h2 p-4 m-0"><span class="text-info">联系</span> 我</div>
                     </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="card">
-                        <img class="card-img-top" src="./assets/stm32.jpeg" alt="">
-                        <div class="card-body">
-                            <h4 class="card-title">TCU 人数监测 <small><span class="badge badge-pill badge-success">running</span></small></h4>
-                            <p class="card-text">实时监控传感器传上来的数据
-                                <br>并以折线图和饼图的方式
-                                <br>进行数据分析。<br>
-                                <br>技术栈: Arduino for STM32 \ Express \ Echarts</p>
-                            <a href="http://139.219.13.39:8086" class="btn btn-primary">过去看看</a>
+                    <div class="content shadow bg-light mt-3 p-4 animated fadeInUp slow">
+                        <div class="h4">和我聊聊</div>
+                        <div class="container-fluid">
+                            <div class="row align-items-end pt-5">
+                                <div class="col-md-6">
+                                    <div class="h5">一些信息</div>
+                                    <div class="small">
+                                        <i class="fas fa-location-arrow"></i>&nbsp;&nbsp;&nbsp;天津市西青区天津城建大学
+                                    </div>
+                                    <div class="small">
+                                        <i class="fas fa-phone"></i>&nbsp;&nbsp;&nbsp;13012231238
+                                    </div>
+                                    <div class="small">
+                                        <i class="fas fa-envelope"></i>&nbsp;&nbsp;&nbsp;838326280@qq.com
+                                    </div>
+                                    <div class="small text-nowrap" style="overflow:auto">
+                                        <i class="fas fa-at"></i>&nbsp;&nbsp;&nbsp;感谢开源项目(滑动查看) Bootstrap \
+                                        Progressbar.js \ Animate.css
+                                    </div>
+                                </div>
+                                <div class="col-md-6 p-0">
+                                    <div class="advice bg-info mt-4 py-4 container">
+                                        <input required id="mailName" type="text" class="mx-auto d-block w-100 p-2 mb-3"
+                                            placeholder="怎么称呼？">
+                                        <input required id="mailContact" type="text" class="mx-auto d-block w-100 p-2 mb-3"
+                                            placeholder="怎么联系你？">
+                                        <textarea required id="mailBody" class="mx-auto w-100 p-2 mb-3" value=""
+                                            placeholder="想说些什么？" maxlength="180"></textarea>
+                                        <button onclick="mailTo()" class="btn btn-dark mx-auto d-block w-75">发送</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="card-footer"><small>2018 . 8 - 2018 . 9</small></div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="card">
-                        <img class="card-img-top" src="./assets/lip.png" alt="">
-                        <div class="card-img-top"></div>
-                        <div class="card-body">
-                            <h4 class="card-title">「纯唇欲动」<small><span class="badge badge-pill badge-warning">Demo</span></small></h4>
-                            <p class="card-text">首款中文唇语识别系统，
-                                <br> 曾荣获“ 2018 微软 ImagineCup”
-                                <br> 天津赛区第一名。<br>
-                                <br>技术栈: WebRTC \ Face++ API \ Baidu TTS</p>
-                            <a href="https://fakegua.github.io/chunchunyudong" class="btn btn-primary">过去看看</a>
-                        </div>
-                        <div class="card-footer"><small>View on Github : <a href="https://github.com/FakeGua/fakegua.github.io/tree/master/chunchunyudong">fakegua.github.io</a></small></div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="card">
-                        <img class="card-img-top" src="./assets/beauty.jpeg" alt="">
-                        <div class="card-img-top"></div>
-                        <div class="card-body">
-                            <h4 class="card-title">「颜值测试」<small><span class="badge badge-pill badge-success">running</span></small></h4>
-                            <p class="card-text">基于Face++人脸识别算法，
-                                <br>不需要重新拍照和从相册中选取相片，实时测算你的颜值！
-                                <br><br>技术栈:
-                                <br> WebRTC \ Face++ API \ Echarts</p>
-                            <a href="https://fakegua.github.io/beauty" class="btn btn-primary">过去看看</a>
-                        </div>
-                        <div class="card-footer"><small>View on Github : <a href="https://github.com/FakeGua/fakegua.github.io/tree/master/beauty">fakegua.github.io</a></small></div>
                     </div>
                 </div>
             </div>
-            <!-- <div class="swiper-pagination"></div> -->
         </div>
-        <footer class="footer animated fadeInUp">
-            <hr>
-            &copy; Panjunwen 2018 | Github : <a href="https://github.com/FakeGua">Fakegua</a>
-            <br>Email : raool1997@gmail.com
-            <br>背景来自 : <a href="https://unsplash.com/@fernandoparedes"> Fernando Paredes Murillo</a>
+        <footer class="contact shadow d-md-none text-light bg-dark my-3 px-4 h6 d-flex justify-content-between align-items-center">
+            等你来信
+            <div>
+                <a class="weixin" tabindex="-1" data-container="body" data-trigger="focus" data-toggle="popover"
+                    data-placement="top" data-content="微信号：RaoolPan"><i class="fab fa-weixin"></i></a>&nbsp;&nbsp;
+                <a class="qq" tabindex="-1" data-container="body" data-trigger="focus" data-toggle="popover"
+                    data-placement="top" data-content="QQ：838326280"><i class="fab fa-qq"></i></a>&nbsp;&nbsp;
+                <a href="https://github.com/fakegua" target="_blank"><i class="fab fa-github"></i></a>&nbsp;&nbsp;
+                <a class="weibo" tabindex="-1" data-container="body" data-trigger="focus" data-toggle="popover"
+                    data-placement="top" data-content="不发微博喔"><i class="fab fa-weibo"></i></a>&nbsp;&nbsp;
+                <a href="https://www.linkedin.com/in/俊文-潘-50b1a0148" target="_blank"><i class="fab fa-linkedin"></i></a>
+            </div>
         </footer>
     </div>
 
-    <script src="./bundle.js"></script>
+
+    <script src="./lib/jquery.min.js"></script>
+    <script src="./lib/bootstrap.bundle.min.js"></script>
+    <script src="./lib/progressbar.min.js"></script>
+    <script>
+        /* 显示内容 */
+        let content = document.querySelectorAll('.introduce,.skills,.works,.contacts');
+        let menu = document.querySelectorAll('.menu .w-100');
+
+        function showContent(className) {
+            for (let i = 0; i < content.length; i++) {
+                if (content[i].className.indexOf(className) > -1) {
+                    content[i].classList.remove('d-none');
+                } else {
+                    content[i].classList.add('d-none');
+                }
+            }
+            for (let i = 0; i < menu.length; i++) {
+                if (menu[i].id == className) {
+                    menu[i].style.backgroundColor = '#343a40';
+                    menu[i].children[0].children[0].style.color = '#17a2b8';
+                    menu[i].children[0].children[1].style.color = '#17a2b8';
+                } else {
+                    menu[i].style.backgroundColor = '#17a2b8';
+                    menu[i].children[0].children[0].style.color = '#343a40';
+                    menu[i].children[0].children[1].style.color = '#343a40';
+                }
+            }
+            if (className == 'skills') {
+                circleOne.animate(0.8);
+                circleTwo.animate(0.9);
+                circleThree.animate(0.75);
+                lineOne.animate(0.9);
+                lineTwo.animate(0.8);
+                lineThree.animate(0.7);
+            }
+        }
+
+        /* popover */
+        $('.weixin').popover();
+        $('.qq').popover();
+        $('.weibo').popover();
+
+        /* 发送邮件 */
+        function mailTo() {
+            let mailName = $('#mailName').val();
+            let mailContact = $('#mailContact').val();
+            let mailBody = $('#mailBody').val();
+
+            if (!mailName || !mailContact || !mailBody) {
+                alert('把表单填完整喔～');
+            } else {
+                window.open(`mailto:838326280@qq.com?subject=来自${mailContact}的${mailName}&body=${mailBody}`);
+            }
+        }
+
+        /* Animate.css */
+        let cv = document.querySelector('.cv');
+        setInterval(() => {
+            cv.classList.replace('jackInTheBox', 'fadeOut');
+        }, 3000);
+        setInterval(() => {
+            cv.classList.replace('fadeOut', 'jackInTheBox');
+        }, 6000);
+
+        /* 进度条 */
+        let circleOne = new ProgressBar.Circle('#otherskill-1', {
+            color: '#17a2b8',
+            strokeWidth: 10,
+            trailWidth: 10,
+            // trailColor: 'green',
+            duration: 2000,
+            svgStyle: {
+                width: '100%',
+                height: '100%'
+            },
+            text: {
+                value: '80%'
+            }
+        });
+        let circleTwo = new ProgressBar.Circle('#otherskill-2', {
+            color: '#17a2b8',
+            strokeWidth: 10,
+            trailWidth: 10,
+            // trailColor: 'green',
+            duration: 2000,
+            svgStyle: {
+                width: '100%',
+                height: '100%'
+            },
+            text: {
+                value: '90%'
+            }
+        });
+        let circleThree = new ProgressBar.Circle('#otherskill-3', {
+            color: '#17a2b8',
+            strokeWidth: 10,
+            trailWidth: 10,
+            // trailColor: 'green',
+            duration: 2000,
+            svgStyle: {
+                width: '100%',
+                height: '100%'
+            },
+            text: {
+                value: '75%'
+            }
+        });
+        let lineOne = new ProgressBar.Line('#mainskill-1', {
+            strokeWidth: 1,
+            duration: 2000,
+            color: '#17a2b8',
+            trailWidth: 10,
+            svgStyle: {
+                width: '100%',
+                height: '100%'
+            }
+        });
+        let lineTwo = new ProgressBar.Line('#mainskill-2', {
+            strokeWidth: 1,
+            duration: 2000,
+            color: '#17a2b8',
+            trailWidth: 10,
+            svgStyle: {
+                width: '100%',
+                height: '100%'
+            }
+        });
+        let lineThree = new ProgressBar.Line('#mainskill-3', {
+            strokeWidth: 1,
+            duration: 2000,
+            color: '#17a2b8',
+            trailWidth: 10,
+            svgStyle: {
+                width: '100%',
+                height: '100%'
+            }
+        });
+    </script>
 </body>
 
 </html>
