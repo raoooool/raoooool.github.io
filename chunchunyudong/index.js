@@ -29,18 +29,12 @@ if (!getUserMedia) {
     });
 }
 
-//修复播放按钮
-// $("#btn_camera").on("click", () => {
-//     $("#img_camera")[0].play();
-// })
-
 //Bootstrap popover
 $('[data-toggle="popover"]').popover();
 
 //Canvas
 let ctx = $("#img_canvas")[0].getContext("2d");
 let imgData = $("#img_canvas")[0].toDataURL("img/png").substr(22);
-//console.log(imgData);
 
 //Get data per X00ms
 setInterval(() => {
@@ -77,17 +71,16 @@ function postApi() {
             url: "https://api-cn.faceplusplus.com/facepp/v3/detect",
             type: "POST",
             data: {
-                api_key: "3xME1UDV5MLzVAmiSgT8Rq-CEVQWKMu6",
-                api_secret: "6l2D14sgc91boa3I6CO-tixfn9fmDKCG",
+                api_key: secret.api_key,
+                api_secret: secret.api_secret,
                 image_base64: imgData,
                 return_landmark: 1,
             },
             success: (data) => {
-                console.log(data);
                 judgeLip(data);
             },
             error: (err) => {
-                console.log(err.status);
+                console.error(err.status);
                 $('#alert_net').show();
             },
             timeout: 2000
@@ -118,6 +111,11 @@ $("#btn_submit").on("click", () => {
     $("#data_tts").val(tts_array.join(""));
 })
 //Baidu TTS API button
+/**
+ * 获取token地址（此api不支持跨域，所以需要手动刷新
+ *  
+ * https://openapi.baidu.com/oauth/2.0/token?grant_type=client_credentials&client_id=Va5yQRHl********LT0vuXV4&client_secret=0rDSjzQ20XUj5i********PQSzr5pVw2
+ * */
 $("#data_play").on("click", () => {
     let tok = "24.2955395accf86bb2737850453eb0769a.2592000.1537491373.282335-11709606"
     $("#data_sound").attr("src", `http://tsn.baidu.com/text2audio?tex=${$("#data_tts").val()}&lan=zh&cuid=abcd&ctp=1&tok=${tok}`);

@@ -58,8 +58,8 @@ $("#btn_submit").on("click", () => {
         url: "https://api-cn.faceplusplus.com/facepp/v3/detect",
         type: "POST",
         data: {
-            api_key: "3xME1UDV5MLzVAmiSgT8Rq-CEVQWKMu6",
-            api_secret: "6l2D14sgc91boa3I6CO-tixfn9fmDKCG",
+            api_key: secret.api_key,
+            api_secret: secret.api_secret,
             image_base64: imgData,
             return_landmark: 0,
             return_attributes: "gender,age,beauty"
