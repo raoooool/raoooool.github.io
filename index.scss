@@ -1,5 +1,9 @@
 @import "./node_modules/bootstrap/scss/bootstrap.scss";
 
+* {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
 @include media-breakpoint-up(md) {
 
     .menu {
