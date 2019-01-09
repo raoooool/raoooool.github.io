@@ -12,16 +12,23 @@
     <div class="under-pannel">
         <div class="keyboard">
             <div>
-                <button onclick="snake.walk(1)">▲</button>
+                <button onclick="snake.walk(1)">W</button>
             </div>
             <div>
-                <button onclick="snake.walk(4)">◀</button>
-                <button onclick="snake.walk(3)">▼</button>
-                <button onclick="snake.walk(2)">▶</button>
+                <button onclick="snake.walk(4)">A</button>
+                <button onclick="snake.walk(3)">S</button>
+                <button onclick="snake.walk(2)">D</button>
             </div>
         </div>
-        <div class="score">
-            你的分数为：<span id="score">0</span>
+        <div style="font-size:24px">
+            你的分数为：<span id="score" style="font-size:56px">0</span>
+            <div class="difficult">
+                <span>难度：</span>
+                <button onclick="util.justifyDifficult(-1)">简单</button>
+                <button class="checkedDifficult" onclick="util.justifyDifficult(0)">正常</button>
+                <button onclick="util.justifyDifficult(1)">地狱</button>
+                <button onclick="util.justifyDifficult(2)">升天</button>
+            </div>
             <div class="title">贪吃蛇 <span style="font-size:14px">Make By PanJW 2019.1.8</span></div>
         </div>
     </div>

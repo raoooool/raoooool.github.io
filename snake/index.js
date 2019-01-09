@@ -13,6 +13,8 @@ function Snake() {
     //行走方法
     this.walk = function (direction) {
         util.clearAllInterval();
+        let speed = sessionStorage.getItem('speed');
+        if(!speed) speed = 100;
         setInterval(() => {
             switch (direction) {
                 case 1:
@@ -38,7 +40,7 @@ function Snake() {
             }
             util.freshColor();
             util.judgeGameOver();
-        }, 100);
+        }, speed);
     }
 }
 
@@ -50,7 +52,7 @@ function MapPoint() {
     //constructor
     INDEX++;
     let mapPoint = document.createElement('div');
-    mapPoint.style = 'background-color:whitesmoke;margin:5px;width:15px;height:15px;border-radius:15px;';
+    mapPoint.style = 'background-color:whitesmoke;margin:2px;width:15px;height:15px;border-radius:15px;';
     document.getElementById('map').appendChild(mapPoint);
     mapPoint.state = 0;
     mapPoint.INDEX = INDEX;
@@ -142,6 +144,36 @@ function Util() {
             clearInterval(i);
         }
     }
+    //调整难度
+    this.justifyDifficult = function(difficult){
+        if(event){
+            let b = document.querySelectorAll('.difficult > button');
+            for(let i=0;i<b.length;i++){
+                b[i].classList.remove('checkedDifficult');
+            }
+            event.target.classList.add('checkedDifficult');
+            // location.reload();
+        }
+        switch (difficult) {
+            case -1:
+                sessionStorage.setItem('speed',200);
+                break;
+            case 0:
+                sessionStorage.setItem('speed',100);
+                break;
+            case 1:
+                sessionStorage.setItem('speed',50);
+                break;
+            case 2:
+                sessionStorage.setItem('speed',10);
+                break;
+        }
+    }
+    //init方法
+    this.init = function(){
+        util.justifyDifficult(0);
+        util.freshColor();
+    }
 }
 
 /**
@@ -184,4 +216,4 @@ let keyBoard = new KeyBoard;
 let util = new Util;
 let score = new Score;
 
-util.freshColor();
+util.init();

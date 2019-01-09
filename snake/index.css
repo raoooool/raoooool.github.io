@@ -2,13 +2,9 @@
   box-sizing: border-box;
 }
 
-.title {
-  font-size: 32px;
-}
-
 .map {
   margin: 50px auto 10px auto;
-  width: 800px;
+  width: 620px;
   display: flex;
   flex-wrap: wrap;
 }
@@ -36,11 +32,26 @@
   justify-content: center;
   align-items: flex-end;
 }
-.under-pannel .score {
-  font-size: 24px;
+.under-pannel button {
+  padding: 8px 15px;
+  background-color: white;
+  border: 0.5px solid gainsboro;
 }
-.under-pannel .score span {
-  font-size: 36px;
+.under-pannel button:hover {
+  background-color: grey;
+  color: whitesmoke;
+}
+.under-pannel .checkedDifficult {
+  background-color: grey;
+  color: whitesmoke;
+}
+.under-pannel .title {
+  font-size: 32px;
+  border-radius: 10px;
+  padding: 5px 20px;
+  background-color: grey;
+  color: whitesmoke;
+  margin-top: 5px;
 }
 
 /*# sourceMappingURL=index.css.map */
