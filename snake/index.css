@@ -1,0 +1,46 @@
+* {
+  box-sizing: border-box;
+}
+
+.title {
+  font-size: 32px;
+}
+
+.map {
+  margin: 50px auto 10px auto;
+  width: 800px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.keyboard {
+  display: flex;
+  flex-direction: column;
+  margin-right: 100px;
+}
+.keyboard div {
+  text-align: center;
+}
+.keyboard div button {
+  width: 100px;
+  height: 50px;
+  margin: 5px;
+  background-color: whitesmoke;
+  border: solid 1px gainsboro;
+}
+
+.under-pannel {
+  margin: auto;
+  width: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+.under-pannel .score {
+  font-size: 24px;
+}
+.under-pannel .score span {
+  font-size: 36px;
+}
+
+/*# sourceMappingURL=index.css.map */
