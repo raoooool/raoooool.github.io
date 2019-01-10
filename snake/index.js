@@ -19,15 +19,19 @@ function Snake() {
             switch (direction) {
                 case 1:
                     this.head = map[this.head.INDEX - 32]; //上
+                    sessionStorage.setItem('direction',1);
                     break;
                 case 2:
                     this.head = map[this.head.INDEX + 1]; //右
+                    sessionStorage.setItem('direction',2);
                     break;
                 case 3:
                     this.head = map[this.head.INDEX + 32]; //下
+                    sessionStorage.setItem('direction',3);
                     break;
                 case 4:
                     this.head = map[this.head.INDEX - 1]; //左
+                    sessionStorage.setItem('direction',4);
                     break;
             }
             this.body.push(this.head);
@@ -183,16 +187,16 @@ function KeyBoard() {
     this.listener = function () {
         switch (event.key.toLowerCase()) {
             case 'w':
-                snake.walk(1);
+                if(sessionStorage.getItem('direction') != 3) snake.walk(1);
                 break;
             case 'd':
-                snake.walk(2);
+                if(sessionStorage.getItem('direction') != 4) snake.walk(2);
                 break;
             case 's':
-                snake.walk(3);
+                if(sessionStorage.getItem('direction') != 1) snake.walk(3);
                 break;
             case 'a':
-                snake.walk(4);
+                if(sessionStorage.getItem('direction') != 2) snake.walk(4);
                 break;
         }
     }
