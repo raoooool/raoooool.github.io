@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>井字棋</title>
+    <script src="https://cdn.bootcss.com/react/16.8.6/umd/react.development.js"></script>
+    <script src="https://cdn.bootcss.com/react-dom/16.8.6/umd/react-dom.development.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.26.0/babel.min.js"></script>
+
+    <style>
+        #root {
+            display: flex;
+            justify-content: center;
+            margin-top: 100px;
+            font-size: 30px;
+        }
+
+        .square {
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            font-size: 50px;
+            border: 1px solid black;
+            text-align: center;
+        }
+
+        .row {
+            display: flex;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        function Square(props) {
+            return (
+                <div
+                    className="square"
+                    onClick={()=>props.onClick(props.id)}
+                >
+                    {props.text}
+                </div>
+            )
+        }
+
+        function Hint(props) {
+            return (
+                <div>
+                    <div>Next : {props.nextStep}</div>
+                </div>
+            )
+        }
+
+        class Board extends React.Component {
+            constructor(props) {
+              super(props);
+              this.state = {
+                  checkedSteps: (new Array(9)).fill(null),
+                  nextStep: 'X',
+                  winner: 'Don\'t have winner yet.'
+              }
+            }
+
+            handleClick = (id) => {
+                if(this.state.checkedSteps[id]) return;
+                this.state.checkedSteps[id] = this.state.nextStep;
+                this.setState({
+                    checkedSteps: this.state.checkedSteps,
+                    nextStep: this.state.nextStep == 'X' ? 'O' : 'X'
+                })
+                this.judgeWinner(this.state.checkedSteps);
+            }
+
+            judgeWinner() {
+                const checkedSteps = this.state.checkedSteps;
+                const possibleStep = [
+                [0,1,2],
+                [3,4,5],
+                [6,7,8],
+                [0,3,6],
+                [1,4,7],
+                [2,5,8],
+                [0,4,8],
+                [2,4,6]
+            ]
+
+            possibleStep.forEach(item => {
+                 const a = item[0];
+                 const b = item[1];
+                 const c = item[2];
+                 if(!(checkedSteps[a] && checkedSteps[b] && checkedSteps[c])) return;
+                 if(checkedSteps[a] == checkedSteps[b] && checkedSteps[b] == checkedSteps[c]){
+                     alert('Winner is ' + checkedSteps[a] + '!');
+                     this.setState({
+                         checkedSteps: [],
+                         nextStep: 'X',
+                         winner: checkedSteps[a]
+                     })
+                 }
+            });
+            }
+
+            renderSquare(id) {
+                return (
+                    <Square
+                        text={this.state.checkedSteps[id]}
+                        onClick={this.handleClick}
+                        id={id}
+                    />
+                )
+            }
+            
+            render() {
+                return (
+                    <div>
+                        <div className="board">
+                            <div className="row">
+                                {this.renderSquare(0)}
+                                {this.renderSquare(1)}
+                                {this.renderSquare(2)}
+                            </div>
+                            <div className="row">
+                                {this.renderSquare(3)}
+                                {this.renderSquare(4)}
+                                {this.renderSquare(5)}
+                            </div>
+                            <div className="row">
+                                {this.renderSquare(6)}
+                                {this.renderSquare(7)}
+                                {this.renderSquare(8)}
+                            </div>
+                        </div>
+                        <br />
+                        <div>
+                            <Hint nextStep={this.state.nextStep} winner={this.state.winner} />
+                        </div>
+                    </div>
+                )
+            }
+        }
+
+        const root = document.getElementById('root');
+        ReactDOM.render(<Board />,root);
+    </script>
+</body>
+
+</html>
