@@ -30,6 +30,11 @@
         .row {
             display: flex;
         }
+
+        .back-item {
+            display: block;
+            margin: 6px;
+        }
     </style>
 </head>
 
@@ -48,36 +53,71 @@
         }
 
         function Hint(props) {
-            return (
-                <div>
-                    <div>Next : {props.nextStep}</div>
-                </div>
-            )
+                if(props.isFinished) {
+                    return (
+                        <div>Winner is {props.winner}!</div>
+                    )
+                }else {
+                    return (
+                        <div>Next : {props.nextStep}</div>
+                    )
+                }
+        }
+
+
+        function Back (props) {
+            return <button className="back-item" onClick={props.onClick}>{props.text}</button>;
         }
 
         class Board extends React.Component {
-            constructor(props) {
-              super(props);
-              this.state = {
-                  checkedSteps: (new Array(9)).fill(null),
-                  nextStep: 'X',
-                  winner: 'Don\'t have winner yet.'
-              }
+                constructor(props) {
+                super(props);
+                this.state = {
+                    checkedSteps: (new Array(9)).fill(null),
+                    nextStep: 'X',
+                    winner: '',
+                    historys: [{checkedSteps: (new Array(9)).fill(null),nextStep: 'X'}],
+                    history: 0,
+                    isFinished: false
+                }
             }
 
-            handleClick = (id) => {
+            squareClick = (id) => {
                 if(this.state.checkedSteps[id]) return;
-                this.state.checkedSteps[id] = this.state.nextStep;
+                if(this.state.isFinished) return;
+                const checkedSteps = this.state.checkedSteps.slice();   //不可变数组
+                this.state.history++;
+                this.setState({history: this.state.history})
+                this.state.historys.splice(this.state.history);
+                checkedSteps[id] = this.state.nextStep;
+                const nextStep = this.state.nextStep == 'X' ? 'O' : 'X';
+                this.state.historys.push({
+                    checkedSteps: checkedSteps.slice(),
+                    nextStep
+                });
                 this.setState({
-                    checkedSteps: this.state.checkedSteps,
-                    nextStep: this.state.nextStep == 'X' ? 'O' : 'X'
+                    checkedSteps: checkedSteps,
+                    nextStep,
+                    historys: this.state.historys
+                },()=>{
+                    this.judgeWinner();
                 })
-                this.judgeWinner(this.state.checkedSteps);
+            }
+
+            backClick = (index) => {
+                let isFinished = false;
+                if(index >= this.state.historys.length - 1 && this.state.winner) isFinished = true;
+                this.setState({
+                    checkedSteps: this.state.historys[index].checkedSteps,
+                    nextStep: this.state.historys[index].nextStep,
+                    history: index,
+                    isFinished
+                })
             }
 
             judgeWinner() {
                 const checkedSteps = this.state.checkedSteps;
-                const possibleStep = [
+                const possibleSteps = [
                 [0,1,2],
                 [3,4,5],
                 [6,7,8],
@@ -88,19 +128,17 @@
                 [2,4,6]
             ]
 
-            possibleStep.forEach(item => {
-                 const a = item[0];
-                 const b = item[1];
-                 const c = item[2];
-                 if(!(checkedSteps[a] && checkedSteps[b] && checkedSteps[c])) return;
-                 if(checkedSteps[a] == checkedSteps[b] && checkedSteps[b] == checkedSteps[c]){
-                     alert('Winner is ' + checkedSteps[a] + '!');
-                     this.setState({
-                         checkedSteps: [],
-                         nextStep: 'X',
-                         winner: checkedSteps[a]
-                     })
-                 }
+            possibleSteps.forEach(item => {
+                const [a, b, c] = item;
+                if(!(checkedSteps[a] && checkedSteps[b] && checkedSteps[c])) return;
+                if(checkedSteps[a] == checkedSteps[b] && checkedSteps[b] == checkedSteps[c]){
+                    alert('Winner is ' + checkedSteps[a] + '!');
+                    this.setState({
+                        nextStep: 'X',
+                        winner: checkedSteps[a],
+                        isFinished: true
+                    })
+                }
             });
             }
 
@@ -108,13 +146,21 @@
                 return (
                     <Square
                         text={this.state.checkedSteps[id]}
-                        onClick={this.handleClick}
+                        onClick={this.squareClick}
                         id={id}
                     />
                 )
             }
             
             render() {
+                const backList = [];
+                let i = 1;
+                this.state.historys.forEach((item,index) => {
+                    if(item) {
+                        backList.push(<Back key={index} text={`Move to #${(i - 1) == 0 ? 'start' : i - 1}`} onClick={() => this.backClick(index)} />);
+                        i++;
+                    };
+                })
                 return (
                     <div>
                         <div className="board">
@@ -136,7 +182,8 @@
                         </div>
                         <br />
                         <div>
-                            <Hint nextStep={this.state.nextStep} winner={this.state.winner} />
+                            <Hint isFinished={this.state.isFinished} nextStep={this.state.nextStep} winner={this.state.winner} />
+                            {backList}
                         </div>
                     </div>
                 )
