@@ -29,7 +29,7 @@
   <body>
     <div class="main">
       <div class="input">
-        <textarea id="input" placeholder="输入脚本"></textarea>
+        <textarea id="input" placeholder="输入要添加序号的脚本"></textarea>
         <button onclick="addIndex()">我好了</button>
       </div>
       <div id="result"></div>
@@ -38,19 +38,24 @@
   <script>
     // Add Index Func
     const addIndex = () => {
-      const text = document.getElementById("input").value;
-      const resultNode = document.getElementById("result");
+      try {
+        const text = document.getElementById("input").value;
+        const resultNode = document.getElementById("result");
 
-      const infos = text.split("\n");
-      let index = 1;
-      const result = infos
-        .filter((item) => item)
-        .map((item) => {
-          return index++ + "." + item;
-        });
-      const resultToShow = result.join("<br />");
-      const resultToCopy = result.join("\n");
-      resultNode.innerHTML = resultToCopy;
+        const infos = text.split("\n");
+        let index = 1;
+        const result = infos
+          .filter((item) => item)
+          .map((item) => {
+            return index++ + "." + item;
+          });
+        const resultToShow = result.join("<br />");
+        const resultToCopy = result.join("\n");
+        resultNode.innerHTML = resultToCopy;
+      } catch (error) {
+        console.error(error);
+        alert("出错了！快联系俊文！");
+      }
     };
   </script>
 </html>
