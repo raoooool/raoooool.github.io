@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AIS</title>
+    <style>
+      body {
+        padding: 24px;
+      }
+
+      .input {
+        display: flex;
+        align-items: center;
+        margin-bottom: 42px;
+      }
+
+      #input {
+        margin-right: 12px;
+        width: 520px;
+        height: 250px;
+      }
+
+      #result {
+        white-space: pre-line;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div class="input">
+        <textarea id="input" placeholder="输入脚本"></textarea>
+        <button onclick="addIndex()">我好了</button>
+      </div>
+      <div id="result"></div>
+    </div>
+  </body>
+  <script>
+    // Add Index Func
+    const addIndex = () => {
+      const text = document.getElementById("input").value;
+      const resultNode = document.getElementById("result");
+
+      const infos = text.split("\n");
+      let index = 1;
+      const result = infos
+        .filter((item) => item)
+        .map((item) => {
+          return index++ + "." + item;
+        });
+      const resultToShow = result.join("<br />");
+      const resultToCopy = result.join("\n");
+      resultNode.innerHTML = resultToCopy;
+    };
+  </script>
+</html>
