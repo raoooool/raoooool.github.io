@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AIS</title>
+    <title>AIS 1.0</title>
     <style>
       body {
         padding: 24px;
@@ -44,11 +44,12 @@
 
         const infos = text.split("\n");
         let index = 1;
-        const result = infos
-          .filter((item) => item)
-          .map((item) => {
-            return index++ + "." + item;
-          });
+        const result = infos.map((item) => {
+          if (!item) {
+            return item;
+          }
+          return index++ + "." + item;
+        });
         const resultToShow = result.join("<br />");
         const resultToCopy = result.join("\n");
         resultNode.innerHTML = resultToCopy;
