@@ -1,19 +1,14 @@
 {
-  "name": "raool.top",
-  "version": "1.0.0",
-  "description": "",
-  "main": "",
-  "dependencies": {
-    "bootstrap": "^4.3.1",
+  "name": "panjunwen",
+  "private": true,
+  "devDependencies": {
     "animate.css": "^3.7.0",
+    "bootstrap": "^4.3.1",
+    "http-server": "^14.1.0",
     "jquery": "^3.5.0",
     "progressbar.js": "^1.0.1"
   },
-  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+    "dev": "http-server -p 1902"
+  }
 }
